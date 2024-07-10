@@ -6,9 +6,10 @@ A State-flux egy Pythonban megírt véges-állapotú gépek lefuttatására kép
 A motor API pontokon keresztül kap inputot egy-egy állapot módosításra, lefuttatás alatt folyó gépenként, és egy webes felületen teszi lehetővé egyes gépek létrehozását, szerkesztését, kitörlését.
 
 # Felépítés
-## 
+## Docker image-ekből áll
 
 Az egész úgy van megírva, hogy egy Docker compose stackben kell futtatni, az a legegyszerűbb.
+
 A stack elemei:
 - state-flux-engine:
 	- egy Pythonban megírt state-machine motor
@@ -16,6 +17,16 @@ A stack elemei:
 	- egy webes felület a folyamatban lévő gépek kilistázására és állapotára, a gépek szerkesztésére, létrehozására és törlésére
 - state-flux-db:
 	- egy Redis-server instance arra, hogy az állapotok nyomon legyenek követve egy key-value párosítással
+
+## state-flux-engine
+### Python csomagok
+Van egy pár Python csomag, amit ezen projekt alkalmazása érdekében lett megírva:
+
+#### state-flux-scxml
+Ez az `SCXML` formátumú fájlok ser-deser folyamataira lett megírva.
+
+#### state-flux-transitions
+Ez az [előző](#state-flux-scxml) csomagot használja fel a statikus fájlok használhatóvá tételére, és a [transitions](https://pypi.org/project/transitions/) csomagot a beolvasott state-machine-k futtatására.
 
 ## docker-compose.yaml
 
@@ -40,6 +51,8 @@ services:
 			- 10001:8001
 
 ```
+
+
 
 # Futtatás
 
