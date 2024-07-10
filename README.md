@@ -26,10 +26,20 @@ Van egy pár Python csomag, amit ezen projekt alkalmazása érdekében lett meg�
 Ez az `SCXML` formátumú fájlok ser-deser folyamataira lett megírva.
 
 #### state-flux-transitions
-Ez az [előző](#state-flux-scxml) csomagot használja fel a statikus fájlok használhatóvá tételére, és a [transitions](https://pypi.org/project/transitions/) csomagot a beolvasott state-machine-k futtatására.
+Ez az [state-flux-scxml](#state-flux-scxml) csomagot használja fel a statikus fájlok használhatóvá tételére, és a [transitions](https://pypi.org/project/transitions/) csomagot a beolvasott state-machine-k futtatására.
+
+## state-flux-web
+Ez csak egy Flask app lesz, ami API pontokon keresztül kommunikál a [state-flux-engine](#state-flux-engine)-nel.
+
+Ez fog majd többek között webes felületet biztosítani a state-machine-ek:
+- létrehozására
+- módosítására, frissítésére
+- törlésére
+
+## state-flux-db
+Egy redis-stack instance, ahol tárolva van egy-egy state-machine adott állapota. Ezzel kommunikál a [state-flux-engine](#state-flux-engine) a `10000`-s porton keresztül. Az adatbázis webfelülete megtekinthető a `20000`-es porton.
 
 ## docker-compose.yaml
-
 ```
 name: state-flux
 services:
@@ -48,7 +58,7 @@ services:
 		image: redis/redis-stack:latest
 		ports:
 			- 10000:6379
-			- 10001:8001
+			- 20000:8001
 
 ```
 
