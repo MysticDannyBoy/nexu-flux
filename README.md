@@ -1,5 +1,5 @@
 # State-flux: egy state machine motor
-![State-flux logo](State-flux logo.png)
+![State-flux logo](./State-flux%20logo.png)
 
 A State-flux egy Pythonban megírt véges-állapotú gépek lefuttatására képes applikáció. Célja a véges-állapotú gépek létrehozása, szerkesztése, lefuttatása és nyomon-követése.
 
