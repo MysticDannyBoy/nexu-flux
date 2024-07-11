@@ -36,6 +36,8 @@ Ez fog majd többek között webes felületet biztosítani a state-machine-ek:
 - módosítására, frissítésére
 - törlésére
 
+Ehhez a `JointJS` framework-öt használnánk.
+
 ## state-flux-db
 Egy redis-stack instance, ahol tárolva van egy-egy state-machine adott állapota. Ezzel kommunikál a [state-flux-engine](#state-flux-engine) a `10000`-s porton keresztül. Az adatbázis webfelülete megtekinthető a `20000`-es porton.
 
